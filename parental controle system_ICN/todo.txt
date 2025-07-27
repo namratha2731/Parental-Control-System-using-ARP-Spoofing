@@ -1,0 +1,18 @@
+1) turn on ip forwarding
+        echo 1 > /proc/sys/net/ipv4/ip_forward
+
+2)  
+for arp sppofing on differnt host, this is for forword chain
+[ to differnt host ]
+
+sudo iptables -I FORWORD -j NFQUEUE --queue-num 6
+sudo iptables --flush
+
+
+to test on the same PC 
+
+for the input Q
+sudo iptables -I INPUT -j NFQUEUE --queue-num 6
+
+for the output Q
+sudo iptables -I OUTPUT -j NFQUEUE --queue-num 6
